@@ -225,16 +225,12 @@ var generatePassword = function() {
 
 }
 
-generateBtn.addEventListener("click", generatePassword);
-
 // Write password to the #password input
 function writePassword() {
   var userpassword = "";
   userpassword = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = userpassword;
-
 }
 
 // Add event listener to generate button
