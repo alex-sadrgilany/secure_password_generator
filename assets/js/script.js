@@ -41,6 +41,7 @@ var getPasswordLength = function() {
     
 }
 
+// Function used to ask the user if they want lowercase letters in their password.
 var getPasswordLowerCase = function() {
 
   passwordLowerCase = window.confirm("Would you like your password to contain lowercase letters?");
@@ -55,6 +56,7 @@ var getPasswordLowerCase = function() {
     }
 }
 
+// Function used to ask the user if they want uppercase letters in their password.
 var getPasswordUpperCase = function() {
 
   passwordUpperCase = window.confirm("Would you like your password to contain uppercase letters?");
@@ -69,6 +71,7 @@ var getPasswordUpperCase = function() {
     }
 }
 
+// Function used to ask the user if they want numbers in their password.
 var getPasswordNumbers = function() {
 
   passwordNumbers = window.confirm("Would you like your password to contain numbers?");
@@ -83,6 +86,7 @@ var getPasswordNumbers = function() {
     }
 }
 
+// Function used to ask the user if they want special characters in their password.
 var getPasswordSpecials = function() {
 
   passwordSpecials = window.confirm("Would you like your password to contain special characters?");
@@ -97,18 +101,20 @@ var getPasswordSpecials = function() {
     }
 }
 
+// Function used to make sure the user selected at least one type of character for their password.
 var checkCharacters = function() {
 
-  if (passwordLowerCase === false && passwordUpperCase === false && passwordNumbers === false && passwordSpecials === false) {
+  if (
+    passwordLowerCase === false && 
+    passwordUpperCase === false && 
+    passwordNumbers === false && 
+    passwordSpecials === false) {
     window.alert("You must select at least one type of character to be included in your password. Please try again.");
     generatePassword();
   }
-  else {
-  }
 }
 
-
-
+// Main function that takes all of the user input and converts it into random password.
 var generatePassword = function() {
   getPasswordLength();
   getPasswordLowerCase();
@@ -120,86 +126,76 @@ var generatePassword = function() {
   var totalcharacters = "";
   var password = "";
 
+    // Using if statements for all the different combinations of characters the user may choose for their password.
     if (
       passwordLowerCase === true &&
       passwordUpperCase === true &&
       passwordNumbers === true &&
-      passwordSpecials === true
-      ) {
+      passwordSpecials === true) {
         totalcharacters += lowerCase + upperCase + numbers + specials;
         console.log("The password character pool is: " + totalcharacters);
       }
     else if (
       passwordLowerCase === true &&
       passwordUpperCase === true &&
-      passwordNumbers === true
-    ) {
+      passwordNumbers === true) {
         totalcharacters += lowerCase + upperCase + numbers;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordUpperCase === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += lowerCase + upperCase + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordNumbers === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += lowerCase + numbers + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
       passwordNumbers === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += upperCase + numbers + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
-      passwordUpperCase === true
-    ) {
+      passwordUpperCase === true) {
         totalcharacters += lowerCase + upperCase;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
-      passwordNumbers === true
-    ) {
+      passwordNumbers === true) {
         totalcharacters += lowerCase + numbers;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += lowerCase + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
-      passwordNumbers === true
-    ) {
+      passwordNumbers === true) {
         totalcharacters += upperCase + numbers;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += upperCase + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordNumbers === true &&
-      passwordSpecials === true
-    ) {
+      passwordSpecials === true) {
         totalcharacters += numbers + specials;
         console.log("The password character pool is: " + totalcharacters);
     }
@@ -219,8 +215,8 @@ var generatePassword = function() {
         totalcharacters += specials;
         console.log("The password character pool is: " + totalcharacters);
     }
-    else {}
 
+    // creating a for loop to randomly select characters from the totalcharacters variable
     for(var i = 0; i < passwordLength; i++) {
       password += totalcharacters.charAt(Math.floor(Math.random() * totalcharacters.length));
     }
@@ -230,8 +226,6 @@ var generatePassword = function() {
 }
 
 generateBtn.addEventListener("click", generatePassword);
-
-
 
 // Write password to the #password input
 function writePassword() {
