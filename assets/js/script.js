@@ -1,5 +1,3 @@
-// Assignment code here
-
 // Global Variables
 var generateBtn = document.querySelector("#generate");
 var passwordLength;
@@ -7,6 +5,10 @@ var passwordLowerCase;
 var passwordUpperCase;
 var passwordNumbers;
 var passwordSpecials;
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var specials = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
 
 // Function used to get the user's desired password length.
 var getPasswordLength = function() {
@@ -114,6 +116,117 @@ var generatePassword = function() {
   getPasswordNumbers();
   getPasswordSpecials();
   checkCharacters();
+
+  var totalcharacters = "";
+  var password = "";
+
+    if (
+      passwordLowerCase === true &&
+      passwordUpperCase === true &&
+      passwordNumbers === true &&
+      passwordSpecials === true
+      ) {
+        totalcharacters += lowerCase + upperCase + numbers + specials;
+        console.log(totalcharacters);
+      }
+    else if (
+      passwordLowerCase === true &&
+      passwordUpperCase === true &&
+      passwordNumbers === true
+    ) {
+      totalcharacters += lowerCase + upperCase + numbers;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordLowerCase === true &&
+      passwordUpperCase === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += lowerCase + upperCase + specials;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordLowerCase === true &&
+      passwordNumbers === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += lowerCase + numbers + specials;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordUpperCase === true &&
+      passwordNumbers === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += upperCase + numbers + specials;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordLowerCase === true &&
+      passwordUpperCase === true
+    ) {
+      totalcharacters += lowerCase + upperCase;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordLowerCase === true &&
+      passwordNumbers === true
+    ) {
+      totalcharacters += lowerCase + numbers;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordLowerCase === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += lowerCase + specials;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordUpperCase === true &&
+      passwordNumbers === true
+    ) {
+      totalcharacters += upperCase + numbers;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordUpperCase === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += upperCase + specials;
+      console.log(totalcharacters);
+    }
+    else if (
+      passwordNumbers === true &&
+      passwordSpecials === true
+    ) {
+      totalcharacters += numbers + specials;
+      console.log(totalcharacters);
+    }
+    else if (passwordLowerCase === true) {
+      totalcharacters += lowerCase;
+      console.log(totalcharacters);
+    }
+    else if (passwordUpperCase === true) {
+      totalcharacters += upperCase;
+      console.log(totalcharacters);
+    }
+    else if (passwordNumbers === true) {
+      totalcharacters += numbers;
+      console.log(totalcharacters);
+    }
+    else if (passwordSpecials === true) {
+      totalcharacters += specials;
+      console.log(totalcharacters);
+    }
+    else {}
+
+    for(var i = 0; i < passwordLength; i++) {
+      password += totalcharacters.charAt(Math.floor(Math.random() * totalcharacters.length));
+    }
+    console.log(password);
+    return password;
+
 }
 
 generateBtn.addEventListener("click", generatePassword);
@@ -122,10 +235,11 @@ generateBtn.addEventListener("click", generatePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var userpassword = "";
+  userpassword = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = userpassword;
 
 }
 
