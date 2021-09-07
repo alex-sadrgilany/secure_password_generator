@@ -33,6 +33,7 @@ THEN the password is either displayed in an alert or written to the page
 
 ### Deployed Webpage
 
+https://asadg7.github.io/secure_password_generator/
 
 ### Screenshots
 

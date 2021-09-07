@@ -5,10 +5,10 @@ var passwordLowerCase;
 var passwordUpperCase;
 var passwordNumbers;
 var passwordSpecials;
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "0123456789";
-var specials = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
+var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var numbers = [0,1,2,3,4,5,6,7,8,9];
+var specials = ["`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","{","]","}","\\","|",";",":","'","\"",",","<",".",">","/","?"];
 
 // Function used to get the user's desired password length.
 var getPasswordLength = function() {
@@ -132,87 +132,168 @@ var generatePassword = function() {
       passwordUpperCase === true &&
       passwordNumbers === true &&
       passwordSpecials === true) {
-        totalcharacters += lowerCase + upperCase + numbers + specials;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
       }
     else if (
       passwordLowerCase === true &&
       passwordUpperCase === true &&
       passwordNumbers === true) {
-        totalcharacters += lowerCase + upperCase + numbers;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordUpperCase === true &&
       passwordSpecials === true) {
-        totalcharacters += lowerCase + upperCase + specials;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordNumbers === true &&
       passwordSpecials === true) {
-        totalcharacters += lowerCase + numbers + specials;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
       passwordNumbers === true &&
       passwordSpecials === true) {
-        totalcharacters += upperCase + numbers + specials;
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordUpperCase === true) {
-        totalcharacters += lowerCase + upperCase;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordNumbers === true) {
-        totalcharacters += lowerCase + numbers;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordLowerCase === true &&
       passwordSpecials === true) {
-        totalcharacters += lowerCase + specials;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
       passwordNumbers === true) {
-        totalcharacters += upperCase + numbers;
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordUpperCase === true &&
       passwordSpecials === true) {
-        totalcharacters += upperCase + specials;
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (
       passwordNumbers === true &&
       passwordSpecials === true) {
-        totalcharacters += numbers + specials;
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (passwordLowerCase === true) {
-        totalcharacters += lowerCase;
+        for(var i = 0; i < lowerCase.length; i++) {
+          totalcharacters += lowerCase[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (passwordUpperCase === true) {
-        totalcharacters += upperCase;
+        for(var i = 0; i < upperCase.length; i++) {
+          totalcharacters += upperCase[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (passwordNumbers === true) {
-        totalcharacters += numbers;
+        for(var i = 0; i < numbers.length; i++) {
+          totalcharacters += numbers[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
     else if (passwordSpecials === true) {
-        totalcharacters += specials;
+        for(var i = 0; i < specials.length; i++) {
+          totalcharacters += specials[i];
+        }
         console.log("The password character pool is: " + totalcharacters);
     }
 
