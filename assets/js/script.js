@@ -131,31 +131,60 @@ var generatePassword = function() {
     for(var i = 0; i < lowerCase.length; i++) {
       totalcharacters += lowerCase[i];
     }
-    console.log("The password character pool is: " + totalcharacters);
   }
   if (passwordUpperCase === true) {
     for(var i = 0; i < upperCase.length; i++) {
       totalcharacters += upperCase[i];
     }
-    console.log("The password character pool is: " + totalcharacters);
   }
   if (passwordNumbers === true) {
     for(var i = 0; i < numbers.length; i++) {
       totalcharacters += numbers[i];
     }
-    console.log("The password character pool is: " + totalcharacters);
   }
   if (passwordSpecials === true) {
     for(var i = 0; i < specials.length; i++) {
       totalcharacters += specials[i];
     }
-    console.log("The password character pool is: " + totalcharacters);
   }
+  console.log("The password character pool is: " + totalcharacters);
 
-  // creating a for loop to randomly select characters from the totalcharacters variable
-  for(var i = 0; i < passwordLength; i++) {
+  // creating a function with a for loop to randomly select characters from the totalcharacters variable.
+  function createPassword() {
+    for(var i = 0; i < passwordLength; i++) {
     password += totalcharacters.charAt(Math.floor(Math.random() * totalcharacters.length));
+    }
+    // the following if statements ensure that the password meets the user's criteria.
+    if (passwordLowerCase === true) {
+      if (!/[a-z]/.test(password)) {
+        console.log("The generated password ( " + password + " ) did not contain a lower case letter when user wanted lower case letters. Running again.");
+        password = "";
+        createPassword();
+      }
+    }
+    if (passwordUpperCase === true) {
+      if (!/[A-Z]/.test(password)) {
+        console.log("The generated password ( " + password + " ) did not contain an upper case letter when user wanted upper case letters. Running again.");
+        password = "";
+        createPassword();
+      }
+    }
+    if (passwordNumbers === true) {
+      if (!/[0-9]/.test(password)) {
+        console.log("The generated password ( " + password + " ) did not contain a number when user wanted numbers. Running again.");
+        password = "";
+        createPassword();
+      }
+    }
+    if (passwordSpecials === true) {
+      if (!/[`~!@#$%^&*()-_=+[{\]}\\|;:'",<.>/?]/.test(password)) {
+        console.log("The generated password ( " + password + " ) did not contain a special character when user wanted special characters. Running again.");
+        password = "";
+        createPassword();
+      } 
+    }
   }
+  createPassword();
   console.log("The user's generated password is: " + password);
   return password;
 
