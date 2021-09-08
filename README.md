@@ -37,6 +37,10 @@ https://asadg7.github.io/secure_password_generator/
 
 ### Screenshots
 
+Screenshot of deployed website in its final state after it has generated a password
+
+![](./assets/images/screenshot_password_generator.png)
+
 
 ### License
 
