@@ -15,7 +15,7 @@ var numbers = [0,1,2,3,4,5,6,7,8,9];
 var specials = ["`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","{","]","}","\\","|",";",":","'","\"",",","<",".",">","/","?"];
 
 // Function used to get the user's desired password length.
-var getPasswordLength = function() {
+var getPasswordTotalCharacters = function() {
 
   passwordLength = prompt("Please determine the length of your password (no less than 8 characters, no greater than 128 characters): ");
 
@@ -25,17 +25,17 @@ var getPasswordLength = function() {
     // Ensure the user enters a number between 8-128.
     if (passwordLength < 8 || passwordLength > 128) {
       alert("Your password length must be an integer between 8 and 128");
-      getPasswordLength();
+      getPasswordTotalCharacters();
     }
     // Ensure the user enters a number and not letters.
     else if (isNaN(passwordLength)) {
       alert("Your password length must be an integer between 8 and 128");
-      getPasswordLength();
+      getPasswordTotalCharacters();
     }
     // Ensure the user enters a whole number integer and not decimals.
     else if (!Number.isInteger(passwordLength)) {
       alert("Your password length must be an integer between 8 and 128");
-      getPasswordLength();
+      getPasswordTotalCharacters();
     }
     else {
       alert("The following prompts will ask you what types of characters you would like in your password. Press 'OK' for YES and 'Cancel' for NO");
@@ -119,9 +119,10 @@ var checkCharacters = function() {
     !passwordUpperCase && 
     !passwordNumbers && 
     !passwordSpecials) {
-    alert("You must select at least one type of character to be included in your password. Please try again.");
-    generatePassword();
-  }
+      console.log("The user did not select at least one type of character. Asking the user again.");
+      alert("You must select at least one type of character to be included in your password. Please try again.");
+      getUserInput();
+    }
   else {
     console.log("The password character pool is: " + characterPool);
   }
@@ -168,22 +169,25 @@ var createPassword = function() {
 }
 
 // Main function that takes all of the user input and converts it into random password.
-var generatePassword = function() {
+var getUserInput = function() {
   getPasswordLowerCase();
   getPasswordUpperCase();
   getPasswordNumbers();
   getPasswordSpecials();
   checkCharacters();
-  createPassword();
 }
 
 // Write password to the #password input
 function writePassword() {
-  getPasswordLength();
-  generatePassword();
+  getPasswordTotalCharacters();
+  getUserInput();
+  createPassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = userPassword;
   console.log("The user's generated password is: " + userPassword);
+  //Reset userPassword and characterPool back to empty if the user wants to create another password.
+  userPassword = "";
+  characterPool = "";
 }
 
 // Add event listener to generate button
