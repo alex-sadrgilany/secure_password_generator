@@ -1,6 +1,6 @@
 // Global Variables
 var generateBtn = document.querySelector("#generate");
-var passwordLength;
+var passwordTotalCharacters;
 var passwordLowerCase;
 var passwordUpperCase;
 var passwordNumbers;
@@ -16,30 +16,28 @@ var specials = ["`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","+",
 
 // Function used to get the user's desired password length.
 var getPasswordTotalCharacters = function() {
-
-  passwordLength = prompt("Please determine the length of your password (no less than 8 characters, no greater than 128 characters): ");
-
+  passwordTotalCharacters = prompt("Please determine the length of your password (no less than 8 characters, no greater than 128 characters): ");
   // Convert user input into a number
-  passwordLength = parseFloat(passwordLength);
+  passwordTotalCharacters = parseFloat(passwordTotalCharacters);
 
     // Ensure the user enters a number between 8-128.
-    if (passwordLength < 8 || passwordLength > 128) {
+    if (passwordTotalCharacters < 8 || passwordTotalCharacters > 128) {
       alert("Your password length must be an integer between 8 and 128");
       getPasswordTotalCharacters();
     }
     // Ensure the user enters a number and not letters.
-    else if (isNaN(passwordLength)) {
+    else if (isNaN(passwordTotalCharacters)) {
       alert("Your password length must be an integer between 8 and 128");
       getPasswordTotalCharacters();
     }
     // Ensure the user enters a whole number integer and not decimals.
-    else if (!Number.isInteger(passwordLength)) {
+    else if (!Number.isInteger(passwordTotalCharacters)) {
       alert("Your password length must be an integer between 8 and 128");
       getPasswordTotalCharacters();
     }
     else {
       alert("The following prompts will ask you what types of characters you would like in your password. Press 'OK' for YES and 'Cancel' for NO");
-      console.log("The user's password is a length of " + passwordLength + " characters.");
+      console.log("The user's password is a length of " + passwordTotalCharacters + " characters.");
     }
 }
 
@@ -124,14 +122,14 @@ var checkCharacters = function() {
       getUserInput();
     }
   else {
-    console.log("The password character pool is: " + characterPool);
+    console.log("The user's password character pool is: " + characterPool);
   }
 }
 
 // Function used to randomly create a password within the confines of the user's selected character pool.
 var createPassword = function() {
   
-  for(var i = 0; i < passwordLength; i++) {
+  for(var i = 0; i < passwordTotalCharacters; i++) {
     // Choosing a character at a random location of characterPool using the Math.floor and Math.random
     userPassword += characterPool.charAt(Math.floor(Math.random() * characterPool.length));
   }
@@ -139,7 +137,7 @@ var createPassword = function() {
   // the following if statements ensure that the password meets the user's criteria based on their character type selections.
   if (passwordLowerCase) {
     if (!/[a-z]/.test(userPassword)) {
-      console.log("The generated password ( " + userPassword + " ) did not contain a lower case letter when user wanted lower case letters. Running again.");
+      console.log("The generated password: " + userPassword + " did not contain a lower case letter when user wanted lower case letters. Running again.");
       // Emptying the generated password before it goes back through the createPassword function again.
       userPassword = "";
       createPassword();
@@ -147,28 +145,28 @@ var createPassword = function() {
   }
   if (passwordUpperCase) {
     if (!/[A-Z]/.test(userPassword)) {
-      console.log("The generated password ( " + userPassword + " ) did not contain an upper case letter when user wanted upper case letters. Running again.");
+      console.log("The generated password: " + userPassword + " did not contain an upper case letter when user wanted upper case letters. Running again.");
       userPassword = "";
       createPassword();
     }
   }
   if (passwordNumbers) {
     if (!/[0-9]/.test(userPassword)) {
-      console.log("The generated password ( " + userPassword + " ) did not contain a number when user wanted numbers. Running again.");
+      console.log("The generated password: " + userPassword + " did not contain a number when user wanted numbers. Running again.");
       userPassword = "";
       createPassword();
     }
   }
   if (passwordSpecials) {
     if (!/[`~!@#$%^&*()-_=+[{\]}\\|;:'",<.>/?]/.test(userPassword)) {
-      console.log("The generated password ( " + userPassword + " ) did not contain a special character when user wanted special characters. Running again.");
+      console.log("The generated password: " + userPassword + " did not contain a special character when user wanted special characters. Running again.");
       userPassword = "";
       createPassword();
     } 
   }
 }
 
-// Main function that takes all of the user input and converts it into random password.
+// Function that combines most of the user input into one for a cleaner writePassword function.
 var getUserInput = function() {
   getPasswordLowerCase();
   getPasswordUpperCase();
@@ -177,7 +175,7 @@ var getUserInput = function() {
   checkCharacters();
 }
 
-// Write password to the #password input
+// Main function that will utilize all of the previous functions to actually generate the user's password to the specified input/criteria.
 function writePassword() {
   getPasswordTotalCharacters();
   getUserInput();
@@ -190,5 +188,5 @@ function writePassword() {
   characterPool = "";
 }
 
-// Add event listener to generate button
+// Adding event listener to the generate button that will fire the writePassword function when clicked.
 generateBtn.addEventListener("click", writePassword);

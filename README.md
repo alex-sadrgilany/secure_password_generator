@@ -30,6 +30,12 @@ THEN the password is either displayed in an alert or written to the page
 
 ### Description
 
+This website serves as a random password generator. It allows for the user to choose a password between 8 and 128 characters. It allows for the user to include any combination of lowercase letters, uppercase letters, numbers, and/or special characters. 
+
+In order to achieve this, I added all the user's desired characters to a pool and randomly selected a character from said pool until the user's desired password length was met.
+
+There's also console logs throughout the process that will display useful information such as the password character length, which character types will and will not be included, the character pool before generation, and the final password. 
+
 
 ### Deployed Webpage
 
